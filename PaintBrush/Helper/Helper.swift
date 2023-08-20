@@ -8,10 +8,40 @@
 import Foundation
 import AppKit
 class Helper{
-   
     static let shared = Helper()
     private init(){}
-    func mnuCut(cutData:Data){
+    func mnuNewFile()->String{
+        let newFile = NSSavePanel()
+        var newFileName:String!
+        newFile.title = "Create New File"
+        if newFile.runModal() == .OK {
+            newFileName = newFile.directoryURL!.path + "/" + newFile.nameFieldStringValue
+        }
+        return newFileName
+    }
+    func mnuOpenFile(mnuViewController:ViewController){
+            let openFile = NSOpenPanel()
+            openFile.title = "Open File"
+            openFile.canChooseFiles = true
+            openFile.canChooseDirectories = true
+            if openFile.runModal() == .OK {
+                let contents =  URL(fileURLWithPath: openFile.url!.path)
+                let image = NSImage(contentsOf: contents)
+                let imageView = NSImageView(image: image!)
+                imageView.frame = mnuViewController.view.bounds
+                mnuViewController.view.addSubview(imageView)
+            }
+    }
+    func mnuSaveFileAs(mnuViewController:ViewController,newFileName:String){
+        let saveFileAs = NSSavePanel()
+        saveFileAs.title = "Save File As"
+        saveFileAs.nameFieldStringValue = newFileName
+        if saveFileAs.runModal() == .OK{
+            FileManager.default.createFile(atPath:saveFileAs.nameFieldStringValue, contents: mnuViewController.drawView.imageRepresentation().tiffRepresentation, attributes: [:])
+        }
+    }
+    func mnuCut(cutData:Data,viewController:ViewController){
+        viewController.drawView.removeFromSuperview()
         let pasteboard = NSPasteboard.general
         pasteboard.clearContents()
         pasteboard.setData(cutData, forType: NSPasteboard.PasteboardType("Clipboard"))
@@ -21,15 +51,17 @@ class Helper{
         pasteboard.clearContents()
         pasteboard.setData(copyData, forType: NSPasteboard.PasteboardType("Clipboard"))
     }
-    func mnuPaste()->Data{
+    func mnuPaste(viewController:ViewController){
         let pasteboard = NSPasteboard.general
-       
-        return pasteboard.data(forType: NSPasteboard.PasteboardType("Clipboard"))!
+        let image = NSImage(data:pasteboard.data(forType: NSPasteboard.PasteboardType("Clipboard"))!)
+        let imageView = NSImageView(image: image!)
+        imageView.frame = NSScreen.main!.visibleFrame
+        viewController.view.addSubview(imageView)
     }
-    func mnuSelectAll(){
-        
+    func mnuDelete(viewController:ViewController){
+        for view in viewController.view.subviews{
+            view.removeFromSuperview()
+        }
     }
-    func mnuDelete(){
-        
-    }
+   
 }

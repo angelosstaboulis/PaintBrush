@@ -144,7 +144,7 @@
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="PaintBrush" customModuleProvider="target">
                     <connections>
                         <outlet property="mnuCut" destination="nsE-ZK-xdb" id="bHk-es-Rs8"/>
-                        <outlet property="mnuEdit" destination="W48-6f-4Dl" id="QIZ-1F-8RM"/>
+                        <outlet property="mnuEdit" destination="W48-6f-4Dl" id="JBa-pR-PHS"/>
                     </connections>
                 </customObject>
                 <customObject id="YLy-65-1bz" customClass="NSFontManager"/>

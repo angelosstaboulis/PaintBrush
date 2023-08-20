@@ -76,6 +76,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D662B28D2A9248A000CD6CF4 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				D6CCAAAE2A8CB9D2007D96D0 /* ViewController.swift */,
+				D6CCAAD72A8CBBC7007D96D0 /* DrawView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 		D674A1DD2A8E7A0C00649392 /* Helper */ = {
 			isa = PBXGroup;
 			children = (
@@ -107,13 +116,12 @@
 		D6CCAAAB2A8CB9D2007D96D0 /* PaintBrush */ = {
 			isa = PBXGroup;
 			children = (
+				D662B28D2A9248A000CD6CF4 /* View */,
 				D674A1DD2A8E7A0C00649392 /* Helper */,
 				D6CCAAAC2A8CB9D2007D96D0 /* AppDelegate.swift */,
-				D6CCAAAE2A8CB9D2007D96D0 /* ViewController.swift */,
 				D6CCAAB02A8CB9D4007D96D0 /* Assets.xcassets */,
 				D6CCAAB22A8CB9D4007D96D0 /* Main.storyboard */,
 				D6CCAAB52A8CB9D4007D96D0 /* PaintBrush.entitlements */,
-				D6CCAAD72A8CBBC7007D96D0 /* DrawView.swift */,
 			);
 			path = PaintBrush;
 			sourceTree = "<group>";

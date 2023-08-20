@@ -11,9 +11,7 @@ class ViewController: NSViewController {
     var drawView:DrawView!
     override func viewDidLoad() {
         super.viewDidLoad()
-        drawView = DrawView()
-        drawView.frame = CGRect(x: 0, y: 0, width: (NSScreen.main?.frame.width)!, height: (NSScreen.main?.frame.height)!)
-        self.view.addSubview(drawView)
+        initialDrawView()
         // Do any additional setup after loading the view.
     }
 
@@ -26,3 +24,10 @@ class ViewController: NSViewController {
 
 }
 
+extension ViewController {
+    func initialDrawView(){
+        drawView = DrawView()
+        drawView.frame = CGRect(x: 0, y: 0, width: (NSScreen.main?.frame.width)!, height: (NSScreen.main?.frame.height)!)
+        self.view.addSubview(drawView)
+    }
+}

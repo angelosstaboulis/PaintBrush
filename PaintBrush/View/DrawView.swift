@@ -7,7 +7,7 @@
 
 import Foundation
 import AppKit
-class DrawView: NSView {
+class DrawView: NSImageView {
     var context:CGContext?
     var lines:[NSPoint] = []
     override func draw(_ dirtyRect: NSRect) {
@@ -16,7 +16,6 @@ class DrawView: NSView {
     }
     
     func drawLine(){
-        
         guard let context = NSGraphicsContext.current?.cgContext else {
             return
         }
@@ -35,7 +34,7 @@ class DrawView: NSView {
         context.strokePath()
         
     }
-
+    
     
     func imageRepresentation()->NSImage{
         let imageRepresentation = bitmapImageRepForCachingDisplay(in: bounds)!
