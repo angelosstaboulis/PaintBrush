@@ -7,54 +7,48 @@
 
 import Foundation
 import AppKit
+import Cocoa
 class DrawView: NSImageView {
-    var context:CGContext?
-    var lines:[NSPoint] = []
-    override func draw(_ dirtyRect: NSRect) {
-        super.draw(dirtyRect)
-        drawLine()
+    var selection:Bool!=false
+
+    var path: NSBezierPath = NSBezierPath()
+    override init(frame: NSRect){
+        super.init(frame: frame)
     }
     
-    func drawLine(){
-        guard let context = NSGraphicsContext.current?.cgContext else {
-            return
-        }
-        context.setLineWidth(15.0)
-        context.setLineCap(.round)
-        for line in lines.enumerated(){
-            if line.offset==0 {
-                context.move(to: line.element)
-            }else{
-                context.addLine(to: line.element)
-            }
-            
-        }
-        NSColor.green.setFill()
-        NSColor.green.setStroke()
-        context.strokePath()
-        
-    }
-    
-    
-    func imageRepresentation()->NSImage{
-        let imageRepresentation = bitmapImageRepForCachingDisplay(in: bounds)!
-        cacheDisplay(in: bounds, to: imageRepresentation)
-        return NSImage(cgImage: imageRepresentation.cgImage!, size: bounds.size)
-        
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
     }
     
     override func mouseDown(with event: NSEvent) {
-        lines.append(event.locationInWindow)
-        setNeedsDisplay(frame)
+        path.move(to: convert(event.locationInWindow, from: nil))
     }
-    override func mouseMoved(with event: NSEvent) {
-        lines.append(event.locationInWindow)
-        setNeedsDisplay(frame)
-        
+    
+    override func mouseDragged(with event: NSEvent) {
+        path.line(to: convert(event.locationInWindow, from: nil))
+        needsDisplay = true
     }
-    override func mouseUp(with event: NSEvent) {
-        lines.append(event.locationInWindow)
-        setNeedsDisplay(frame)
-        
+
+    override func draw(_ dirtyRect: NSRect) {
+        super.draw(dirtyRect)
+        NSColor.green.set()
+        path.lineJoinStyle = .round
+        path.lineCapStyle = .round
+        path.lineWidth = 15.0
+        path.stroke()
     }
+    func imageRepresentation()->NSImage{
+          let imageRepresentation = bitmapImageRepForCachingDisplay(in: bounds)!
+          cacheDisplay(in: bounds, to: imageRepresentation)
+          return NSImage(cgImage: imageRepresentation.cgImage!, size: bounds.size)
+          
+    }
+ 
+    func mnuDelete(viewController:ViewController){
+        for view in viewController.view.subviews{
+            view.removeFromSuperview()
+        }
+    }
+
+    
 }

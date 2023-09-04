@@ -6,28 +6,28 @@
 //
 
 import Cocoa
+import SwiftUI
 
 class ViewController: NSViewController {
-    var drawView:DrawView!
+    public var drawView = DrawView()
+    override func loadView() {
+        view = drawView
+    }
     override func viewDidLoad() {
         super.viewDidLoad()
-        initialDrawView()
-        // Do any additional setup after loading the view.
+        drawView.frame = NSScreen.main!.frame
     }
-
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        
+        
+    }
     override var representedObject: Any? {
         didSet {
-        // Update the view, if already loaded.
+            // Update the view, if already loaded.
         }
     }
-
-
+    
+    
 }
 
-extension ViewController {
-    func initialDrawView(){
-        drawView = DrawView()
-        drawView.frame = CGRect(x: 0, y: 0, width: (NSScreen.main?.frame.width)!, height: (NSScreen.main?.frame.height)!)
-        self.view.addSubview(drawView)
-    }
-}

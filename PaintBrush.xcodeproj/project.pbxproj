@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D674A1DF2A8E7A1B00649392 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = D674A1DE2A8E7A1B00649392 /* Helper.swift */; };
+		D67B08362AA1D3FC009FEFB9 /* SelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D67B08352AA1D3FC009FEFB9 /* SelectionView.swift */; };
 		D6CCAAAD2A8CB9D2007D96D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CCAAAC2A8CB9D2007D96D0 /* AppDelegate.swift */; };
 		D6CCAAAF2A8CB9D2007D96D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D6CCAAAE2A8CB9D2007D96D0 /* ViewController.swift */; };
 		D6CCAAB12A8CB9D4007D96D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D6CCAAB02A8CB9D4007D96D0 /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 
 /* Begin PBXFileReference section */
 		D674A1DE2A8E7A1B00649392 /* Helper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helper.swift; sourceTree = "<group>"; };
+		D67B08352AA1D3FC009FEFB9 /* SelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectionView.swift; sourceTree = "<group>"; };
 		D6CCAAA92A8CB9D2007D96D0 /* PaintBrush.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PaintBrush.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D6CCAAAC2A8CB9D2007D96D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D6CCAAAE2A8CB9D2007D96D0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -81,6 +83,7 @@
 			children = (
 				D6CCAAAE2A8CB9D2007D96D0 /* ViewController.swift */,
 				D6CCAAD72A8CBBC7007D96D0 /* DrawView.swift */,
+				D67B08352AA1D3FC009FEFB9 /* SelectionView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -159,6 +162,8 @@
 			dependencies = (
 			);
 			name = PaintBrush;
+			packageProductDependencies = (
+			);
 			productName = PaintBrush;
 			productReference = D6CCAAA92A8CB9D2007D96D0 /* PaintBrush.app */;
 			productType = "com.apple.product-type.application";
@@ -231,6 +236,8 @@
 				Base,
 			);
 			mainGroup = D6CCAAA02A8CB9D2007D96D0;
+			packageReferences = (
+			);
 			productRefGroup = D6CCAAAA2A8CB9D2007D96D0 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -277,6 +284,7 @@
 				D6CCAAAD2A8CB9D2007D96D0 /* AppDelegate.swift in Sources */,
 				D6CCAAD82A8CBBC7007D96D0 /* DrawView.swift in Sources */,
 				D674A1DF2A8E7A1B00649392 /* Helper.swift in Sources */,
+				D67B08362AA1D3FC009FEFB9 /* SelectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

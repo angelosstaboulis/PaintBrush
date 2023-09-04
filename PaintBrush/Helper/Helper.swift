@@ -32,36 +32,12 @@ class Helper{
                 mnuViewController.view.addSubview(imageView)
             }
     }
-    func mnuSaveFileAs(mnuViewController:ViewController,newFileName:String){
+    func mnuSaveFileAs(drawView:DrawView,newFileName:String){
         let saveFileAs = NSSavePanel()
         saveFileAs.title = "Save File As"
         saveFileAs.nameFieldStringValue = newFileName
         if saveFileAs.runModal() == .OK{
-            FileManager.default.createFile(atPath:saveFileAs.nameFieldStringValue, contents: mnuViewController.drawView.imageRepresentation().tiffRepresentation, attributes: [:])
+            FileManager.default.createFile(atPath:saveFileAs.nameFieldStringValue, contents: drawView.imageRepresentation().tiffRepresentation, attributes: [:])
         }
     }
-    func mnuCut(cutData:Data,viewController:ViewController){
-        viewController.drawView.removeFromSuperview()
-        let pasteboard = NSPasteboard.general
-        pasteboard.clearContents()
-        pasteboard.setData(cutData, forType: NSPasteboard.PasteboardType("Clipboard"))
-    }
-    func mnuCopy(copyData:Data){
-        let pasteboard = NSPasteboard.general
-        pasteboard.clearContents()
-        pasteboard.setData(copyData, forType: NSPasteboard.PasteboardType("Clipboard"))
-    }
-    func mnuPaste(viewController:ViewController){
-        let pasteboard = NSPasteboard.general
-        let image = NSImage(data:pasteboard.data(forType: NSPasteboard.PasteboardType("Clipboard"))!)
-        let imageView = NSImageView(image: image!)
-        imageView.frame = NSScreen.main!.visibleFrame
-        viewController.view.addSubview(imageView)
-    }
-    func mnuDelete(viewController:ViewController){
-        for view in viewController.view.subviews{
-            view.removeFromSuperview()
-        }
-    }
-   
 }
